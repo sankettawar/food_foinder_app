@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/pink"
+    tools:context="com.example.ibase.foodresturantsystem.Addmenu">
+
+
+    <ScrollView
+        android:id="@+id/login_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="15dp">
+
+
+        <TableLayout
+            android:id="@+id/table2"
+            android:layout_width="fill_parent"
+            android:layout_below="@+id/test_button_text23"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="fill_parent"
+            android:stretchColumns="*">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pay Bill"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:textSize="28dp"
+                android:gravity="center_horizontal"
+                android:textColor="@color/black"/>
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/border">
+
+
+                <TextView
+                    android:gravity="left"
+                    android:text="amount:"
+                    android:padding="8dp"
+                    android:background="@drawable/border"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/total"
+                    android:gravity="left"
+
+                    android:padding="8dp"
+                    android:background="@drawable/border"
+                    android:textStyle="bold"/>
+            </TableRow>
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                >
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:text="Choose Transaction:"
+
+                    android:padding="13dp"
+android:textSize="18dp"
+                    android:textStyle="bold"/>
+
+
+
+
+            </TableRow>
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/border">
+
+                <TextView
+                    android:gravity="left"
+                    android:text="By Paytm:"
+                    android:padding="8dp"
+                    android:background="@drawable/border"
+                    android:textStyle="bold"/>
+
+
+                <Button
+                    android:id="@+id/paytm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:padding="10dp"
+                    android:text="Paytm"
+                    android:background="@drawable/border"
+                    android:inputType="textPersonName"
+                    />
+
+
+            </TableRow>
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/border">
+
+                <TextView
+                    android:gravity="left"
+                    android:text="By Other:"
+                    android:padding="8dp"
+                    android:background="@drawable/border"
+                    android:textStyle="bold"/>
+
+
+                <Spinner
+                    android:id="@+id/sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:padding="10dp"
+              android:entries="@array/transction"
+                    android:background="@drawable/border"
+                    android:inputType="textPersonName"
+                    />
+
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/border">
+            <TextView
+                android:gravity="left"
+                android:text="16 digit Number:"
+                android:padding="8dp"
+                android:background="@drawable/border"
+                android:textStyle="bold"/>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/border">
+
+
+
+                <EditText
+                    android:id="@+id/number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:padding="10dp"
+
+                    android:background="@drawable/border"
+                    android:inputType="textPersonName"
+                    />
+
+
+            </TableRow>
+
+
+
+
+
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/border">
+
+
+
+
+                <Button
+                    android:id="@+id/submit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="40dp"
+
+                    android:padding="10dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/buttonshape2"
+                    android:shadowColor="#A8A8A8"
+                    android:shadowDx="0"
+                    android:shadowDy="0"
+                    android:shadowRadius="5"
+                    android:text="Place Order" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/border">
+
+                <Button
+                    android:id="@+id/button6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="25dp"
+
+
+                    android:padding="10dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/buttonshape2"
+                    android:shadowColor="#A8A8A8"
+                    android:shadowDx="0"
+                    android:shadowDy="0"
+                    android:shadowRadius="5"
+                    android:text="Skip Add To Cart" />
+            </TableRow>
+
+
+        </TableLayout>
+    </ScrollView>
+</LinearLayout>

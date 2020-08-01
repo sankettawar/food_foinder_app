@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@drawable/sss"
+    >
+    <ScrollView
+        android:id="@+id/login_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+
+        android:orientation="vertical"
+        android:padding="6dip">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn"
+                style="@style/HomeButton"
+                android:drawableTop="@drawable/addowner"
+                android:onClick="onButtonClicker"
+                android:textColor="@color/white"
+                android:layout_marginTop="34dp"
+                android:text="Add Owner" />
+
+            <Button
+                android:id="@+id/btn1"
+                style="@style/HomeButton"
+                android:drawableTop="@drawable/viewowner"
+                android:onClick="onButtonClicker"
+                android:layout_marginTop="34dp"
+                android:textColor="@color/white"
+                android:text="View Owner" />
+
+
+            <Button
+                android:id="@+id/btn3"
+                style="@style/HomeButton"
+                android:drawableTop="@drawable/logout"
+                android:onClick="onButtonClicker"
+                android:layout_marginTop="34dp"
+                android:textColor="@color/white"
+                android:text="Logout" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

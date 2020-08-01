@@ -1,0 +1,239 @@
+package com.example.ibase.foodresturantsystem;
+
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.preference.PreferenceManager;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.telephony.SmsManager;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URLEncoder;
+
+import cz.msebera.android.httpclient.HttpEntity;
+import cz.msebera.android.httpclient.HttpResponse;
+import cz.msebera.android.httpclient.client.HttpClient;
+import cz.msebera.android.httpclient.client.methods.HttpPost;
+import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
+
+public class PayAmountAddtocart extends AppCompatActivity {
+    TextView total;
+    String uname;
+    EditText number;
+    Button btn,pay;
+    SharedPreferences shr;
+    String get_total;
+    Spinner sp1;
+    String menu_title,address,hotelid,menu_id,b_number;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_pay_amount_addtocart);
+
+        shr= PreferenceManager.getDefaultSharedPreferences(this);
+        btn=(Button)findViewById(R.id.submit);
+        number=(EditText)findViewById(R.id.number);
+        sp1=(Spinner)findViewById(R.id.sp);
+
+        final String  uid=shr.getString("userid","uid");
+        uname=shr.getString("name","name");
+
+      Bundle bundle=getIntent().getExtras();
+        total=(TextView)findViewById(R.id.total);
+      String quantity=bundle.getString("cost");
+
+ total.setText(quantity);
+        /*  String cost=bundle.getString("cost");
+        menu_title=bundle.getString("menutitle");
+        //   address=bundle.getString("address");
+        hotelid=bundle.getString("hotelid");
+        //     hotelid=bundle.getString("hotelid");
+        menu_id=bundle.getString("menuid");
+        b_number=bundle.getString("number");*/
+        pay=(Button)findViewById(R.id.paytm);
+        Toast.makeText(PayAmountAddtocart.this,""+quantity,Toast.LENGTH_SHORT).show();
+        int c,q;
+      /*  c=Integer.parseInt(quantity);
+        q=Integer.parseInt(cost);
+        int t=c*q;
+        if (t>100){
+            String total_amount=""+t;
+            total.setText(total_amount);
+        }else{
+            Toast.makeText(PayAmountAddtocart.this,"Please Choose greater than 100",Toast.LENGTH_SHORT).show();
+            finish();
+        }*/
+
+        // Toast.makeText(Payamount.this,""+t,Toast.LENGTH_SHORT).show();
+
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Boolean status=true;
+                String get_number=number.getText().toString();
+                get_total=total.getText().toString();
+                String mobilepattern = "[0-9]{16}";
+
+                  String data=sp1.getSelectedItem().toString();
+                Toast.makeText(PayAmountAddtocart.this,""+data,Toast.LENGTH_SHORT).show();
+                  if(data.contentEquals("Cash On Delivery")){
+
+                      Toast.makeText(PayAmountAddtocart.this,"Order Place Sucessfullly",Toast.LENGTH_SHORT).show();
+                      Intent i1= new Intent(PayAmountAddtocart.this,Foodsearch.class);
+                      startActivity(i1);
+                      finish();
+                  }else {
+
+
+                      if (get_number.matches(mobilepattern) == false) {
+                          number.setError("Please Enter 16 Digit Number");
+                          number.requestFocus();
+                          status = false;
+                      }
+
+                      if (status) {
+                          try {
+
+                              // Toast.makeText(PlaceOrder.this, , Toast.LENGTH_SHORT).show();
+                              RegisterUser gettrans = new RegisterUser();
+                              DbParameter host = new DbParameter();
+                              String url = host.getHostpath();
+                              url = url + "/UpdateAddtocart.php";
+
+                              gettrans.execute(url);
+                          } catch (Exception e) {
+                              Toast.makeText(PayAmountAddtocart.this, "" + e, Toast.LENGTH_SHORT).show();
+                          }
+                      }
+                  }
+            }
+        });
+
+
+
+        pay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                PackageManager pm = getPackageManager();
+
+                try {
+
+                    pm.getPackageInfo("paytm.com", PackageManager.GET_ACTIVITIES);
+
+                    Intent LaunchIntent = pm.getLaunchIntentForPackage("com.paytm.com");
+
+                    LaunchIntent.setFlags(0);
+
+                    startActivityForResult(LaunchIntent, 5);
+
+                } catch (PackageManager.NameNotFoundException e) {
+
+                    Uri URLURI = Uri.parse("https://play.google.com/store/apps/details?id=net.one97.paytm&hl=en");
+
+                    Intent intent = new Intent(Intent.ACTION_VIEW, URLURI);
+
+                    startActivity(intent);
+                }
+
+            }
+        });
+    }
+
+    public class RegisterUser extends AsyncTask<String, Integer, String> {
+        private ProgressDialog progress = null;
+        String out="";
+        @Override
+        protected String doInBackground(String... geturl) {
+
+
+            try{
+                //	String url= ;
+                HttpClient http=new DefaultHttpClient();
+                HttpPost http_get= new HttpPost(geturl[0]);
+                HttpResponse response=http.execute(http_get);
+                HttpEntity http_entity=response.getEntity();
+                BufferedReader br= new BufferedReader(new InputStreamReader(http_entity.getContent()));
+                out = br.readLine();
+
+            }catch (Exception e){
+
+                out= e.toString();
+            }
+            return out;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            progress = ProgressDialog.show(PayAmountAddtocart.this, null,
+                    "Processing...");
+
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            // TODO Auto-generated method stub
+            //  Toast.makeText(Payamount.this, " "+out, Toast.LENGTH_SHORT).show();
+            // Toast.makeText(Payamount.this, "Output"+out, Toast.LENGTH_SHORT).show();
+            Toast.makeText(PayAmountAddtocart.this,"Order Place Sucessfullly",Toast.LENGTH_SHORT).show();
+            Intent i1= new Intent(PayAmountAddtocart.this,Foodsearch.class);
+            startActivity(i1);
+            finish();
+            /*
+            try {
+                if(out.contains("1")){
+                    if(address.contentEquals("rajkamal")){
+                        Toast.makeText(PayAmountAddtocart.this,"10 minutes order deliver at your house",Toast.LENGTH_SHORT).show();
+                    }else if(address.contentEquals("rajapeth")){
+                        Toast.makeText(PayAmountAddtocart.this,"15 minutes order deliver at your house",Toast.LENGTH_SHORT).show();
+                    }else if(address.contentEquals("rukmani nagar")){
+                        Toast.makeText(PayAmountAddtocart.this,"25 minutes order deliver at your house",Toast.LENGTH_SHORT).show();
+                    }else if(address.contentEquals("panchvati")){
+                        Toast.makeText(PayAmountAddtocart.this,"40 minutes order deliver at your house",Toast.LENGTH_SHORT).show();
+                    }else if(address.contentEquals("sai nagar")){
+                        Toast.makeText(PayAmountAddtocart.this,"30 minutes order deliver at your house",Toast.LENGTH_SHORT).show();
+                    }else if(address.contentEquals("gopal nagar")){
+                        Toast.makeText(PayAmountAddtocart.this,"24 minutes order deliver at your house",Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(PayAmountAddtocart.this,"60 minutes minimum for order deliver at your house",Toast.LENGTH_SHORT).show();
+
+                    }
+                    Toast.makeText(PayAmountAddtocart.this, "You are Place Order Sucessfully", Toast.LENGTH_SHORT).show();
+                    String sms="Place Order"+address+""+menu_title+"By Customer";
+                    SmsManager smsManager=SmsManager.getDefault();
+                    smsManager.sendTextMessage(b_number,null,sms,null,null);
+                    Toast.makeText(PayAmountAddtocart.this,"Owner Sent Request Of your Food",Toast.LENGTH_SHORT).show();
+                    number.setText("");
+
+                    //address.setText("");
+
+                }
+
+            }catch (Exception e){
+               // Toast.makeText(PayAmountAddtocart.this,"60 minutes minimum for order deliver at your house",Toast.LENGTH_SHORT).show();
+
+            }
+             */
+
+            progress.dismiss();
+            super.onPostExecute(result);
+        }
+
+
+
+
+    }
+}

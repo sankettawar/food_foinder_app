@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dsss"
+    tools:context="com.example.ibase.foodresturantsystem.Addmenu">
+
+
+    <ScrollView
+        android:id="@+id/login_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="15dp">
+
+        <TableLayout
+            android:id="@+id/table2"
+            android:layout_width="fill_parent"
+            android:layout_below="@+id/test_button_text23"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="fill_parent"
+            android:stretchColumns="*">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Place Order Here"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:textSize="28dp"
+                android:gravity="center_horizontal"
+                android:textColor="@color/black"/>
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/border">
+
+                <TextView
+                    android:gravity="left"
+                    android:text="Hotel Name:"
+                    android:padding="8dp"
+                    android:background="@drawable/border"
+                    android:textStyle="bold"/>
+
+
+                <TextView
+                    android:id="@+id/hotelname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:padding="10dp"
+                    android:background="@drawable/border"
+                    android:inputType="textPersonName"
+                    />
+
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/border">
+
+                <TextView
+                    android:gravity="left"
+                    android:text="Menu Title:"
+                    android:padding="8dp"
+                    android:background="@drawable/border"
+                    android:textStyle="bold"/>
+
+
+                <TextView
+                    android:id="@+id/item_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:padding="10dp"
+                    android:background="@drawable/border"
+                    android:inputType="textPersonName"
+                    />
+
+
+            </TableRow>
+
+
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/border">
+
+                <TextView
+                    android:gravity="left"
+                    android:text="Menu Description:"
+                    android:background="@drawable/border"
+                    android:padding="8dp"
+                    android:textStyle="bold"/>
+
+
+                <TextView
+                    android:id="@+id/des"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="10dp"
+                    android:ems="10"
+                    android:background="@drawable/border"
+                    android:inputType="number"
+                    />
+            </TableRow>
+
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/border">
+
+                <TextView
+                    android:gravity="left"
+                    android:text="Category:"
+                    android:padding="8dp"
+                    android:background="@drawable/border"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:padding="10dp"
+                    android:background="@drawable/border"
+                    android:inputType="textPersonName"
+                    />
+
+
+            </TableRow>
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/border">
+
+                <TextView
+                    android:gravity="left"
+                    android:text="Cost:"
+                    android:padding="8dp"
+                    android:background="@drawable/border"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/menu_cost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:padding="10dp"
+                    android:background="@drawable/border"
+                    android:inputType="textPersonName"
+                    />
+
+            </TableRow>
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/border">
+
+                <TextView
+                    android:gravity="left"
+                    android:text="Offer:"
+                    android:padding="8dp"
+                    android:background="@drawable/border"
+                    android:textStyle="bold"/>
+
+
+                <TextView
+                    android:id="@+id/offers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:padding="10dp"
+                    android:background="@drawable/border"
+                    android:inputType="textPersonName"
+                    />
+
+
+            </TableRow>
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/border">
+
+                <TextView
+                    android:gravity="left"
+                    android:text="Enter Qauntity:"
+                    android:padding="8dp"
+                    android:background="@drawable/border"
+                    android:textStyle="bold"/>
+
+                <EditText
+                    android:id="@+id/qua"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:padding="10dp"
+                    android:background="@drawable/border"
+                    android:inputType="number"
+                    />
+
+
+            </TableRow>
+
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/border">
+
+                <TextView
+                    android:gravity="left"
+                    android:text="Enter Address:"
+                    android:padding="8dp"
+                    android:background="@drawable/border"
+                    android:textStyle="bold"/>
+
+                <EditText
+                    android:id="@+id/address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:padding="10dp"
+                    android:background="@drawable/border"
+                    android:inputType="text"
+                    />
+
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/border">
+
+                <Button
+                    android:id="@+id/submit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:shadowColor="#A8A8A8"
+                    android:shadowDx="0"
+                    android:shadowDy="0"
+                    android:shadowRadius="5"
+                    android:layout_marginTop="50dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:textColor="@color/white"
+                    android:padding="10dp"
+                    android:text="Next" />
+
+            </TableRow>
+
+
+        </TableLayout>
+    </ScrollView>
+</LinearLayout>

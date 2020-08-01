@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dsss"
+    tools:context="com.example.ibase.foodresturantsystem.UpdateMenu">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_marginTop="15dp"
+        android:padding="20dp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/white"
+        android:text="Menu Search" />
+
+    <EditText
+        android:id="@+id/ed1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:padding="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:hint="Enter Item"/>
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Search"
+
+        android:background="@drawable/buttonshape2"
+        android:shadowColor="#A8A8A8"
+
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/white"
+        android:layout_marginTop="200dp"/>
+
+
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:dividerHeight="12dp"
+        android:padding="20dp"
+        android:layout_marginTop="250dp"
+        />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_alignEnd="@+id/ed1"
+        android:layout_alignRight="@+id/ed1"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="40dp"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:text="Logout" />
+
+
+</RelativeLayout>
